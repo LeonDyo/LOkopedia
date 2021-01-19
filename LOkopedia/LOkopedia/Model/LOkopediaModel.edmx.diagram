@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="407ea1e8169640689edc25e3836493f4" Name="Diagram1">
+        <EntityTypeShape EntityType="LOkopediaModel.Cart" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.CartDetail" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.User" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="LOkopediaModel.FK__Cart__UserId__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__CartDetai__CartI__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__CartDetai__Produ__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Product__Categor__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Product__UserId__73BA3083" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
