@@ -48,7 +48,7 @@ namespace LOkopedia.View
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText productPrice;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl productPrice;
 
         /// <summary>
         /// productDescription control.
@@ -69,12 +69,30 @@ namespace LOkopedia.View
         protected global::System.Web.UI.WebControls.FileUpload productImage;
 
         /// <summary>
-        /// addBtn control.
+        /// errorMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addBtn;
+        protected global::System.Web.UI.WebControls.Label errorMsg;
+
+        /// <summary>
+        /// updateBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button updateBtn;
+
+        /// <summary>
+        /// deleteBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button deleteBtn;
     }
 }

@@ -4,17 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="407ea1e8169640689edc25e3836493f4" Name="Diagram1">
-        <EntityTypeShape EntityType="LOkopediaModel.Cart" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LOkopediaModel.CartDetail" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LOkopediaModel.Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LOkopediaModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LOkopediaModel.User" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="LOkopediaModel.FK__Cart__UserId__08B54D69" ManuallyRouted="false" />
-        <AssociationConnector Association="LOkopediaModel.FK__CartDetai__CartI__09A971A2" ManuallyRouted="false" />
-        <AssociationConnector Association="LOkopediaModel.FK__CartDetai__Produ__0A9D95DB" ManuallyRouted="false" />
-        <AssociationConnector Association="LOkopediaModel.FK__Product__Categor__75A278F5" ManuallyRouted="false" />
-        <AssociationConnector Association="LOkopediaModel.FK__Product__UserId__73BA3083" ManuallyRouted="false" />
+      <Diagram DiagramId="039571ccf3144c069a14d9a9496927c3" Name="Diagram1">
+        <EntityTypeShape EntityType="LOkopediaModel.Cart" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.Category" Width="1.5" PointX="3.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.Chat" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.ForumDetail" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.Forumm" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.History" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.HistoryDetail" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.Product" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.Room" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOkopediaModel.User" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="LOkopediaModel.FK__Cart__CartId__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Cart__ProductId__04AFB25B" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Product__Categor__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Chat__RoomId__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Chat__UserId__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__ForumDeta__UserI__4A8310C6" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Forumm__ProductI__44CA3770" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__History__UserId__09746778" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__HistoryDe__Histo__0F2D40CE" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__HistoryDe__Produ__0E391C95" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Product__UserId__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Room__FirstUserI__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="LOkopediaModel.FK__Room__SecondUser__55F4C372" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

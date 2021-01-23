@@ -18,14 +18,19 @@ namespace LOkopedia.Model
         public User()
         {
             this.Carts = new HashSet<Cart>();
+            this.Chats = new HashSet<Chat>();
+            this.ForumDetails = new HashSet<ForumDetail>();
+            this.Histories = new HashSet<History>();
             this.Products = new HashSet<Product>();
+            this.Rooms = new HashSet<Room>();
+            this.Rooms1 = new HashSet<Room>();
         }
     
         public int UserId { get; set; }
         public string UserEmail { get; set; }
         public string UserPassword { get; set; }
         public string UserName { get; set; }
-        public string UserPhoto { get; set; }
+        public byte[] UserPhoto { get; set; }
         public System.DateTime UserDob { get; set; }
         public System.DateTime JoinDate { get; set; }
         public string UserPhone { get; set; }
@@ -33,6 +38,16 @@ namespace LOkopedia.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Chat> Chats { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ForumDetail> ForumDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<History> Histories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Room> Rooms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Room> Rooms1 { get; set; }
     }
 }

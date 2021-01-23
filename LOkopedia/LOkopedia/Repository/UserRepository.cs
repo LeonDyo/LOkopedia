@@ -38,7 +38,7 @@ namespace LOkopedia.Repository
             return (u == null) ? false : true;
         }
 
-        public static void createUser(String email, String password, String username, String photo, DateTime dob, DateTime joinDate, String phone)
+        public static void createUser(String email, String password, String username, byte[] photo, DateTime dob, DateTime joinDate, String phone)
         {
             User user = UserFactory.create(email, password, username, photo, dob, joinDate, phone);
             LOkopediaEntities1 db = new LOkopediaEntities1();
@@ -46,7 +46,7 @@ namespace LOkopedia.Repository
             db.SaveChanges();
         }
 
-        public static Boolean updateUser(int userId, string userName, string userEmail, string userPhoto, string userPhone)
+        public static Boolean updateUser(int userId, string userName, string userEmail, byte[] userPhoto, string userPhone)
         {
             LOkopediaEntities1 db = new LOkopediaEntities1();
             User user = (from u in db.Users
@@ -56,14 +56,12 @@ namespace LOkopedia.Repository
 
             if (user == null) return false;
             
-            if (!userPhoto.Equals("")) user.UserPhoto = userPhoto;
+            if (userPhoto.Length != 0) user.UserPhoto = userPhoto;
             user.UserName = userName;
             user.UserEmail = userEmail;
             user.UserPhone = userPhone;
             db.SaveChanges();
             return true;
-        }
-
-        
+        }      
     }
 }

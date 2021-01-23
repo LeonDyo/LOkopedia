@@ -5,14 +5,6 @@
       <EntityTypeMapping TypeName="LOkopediaModel.Cart">
         <MappingFragment StoreEntitySet="Cart">
           <ScalarProperty Name="CartId" ColumnName="CartId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CartDetails">
-      <EntityTypeMapping TypeName="LOkopediaModel.CartDetail">
-        <MappingFragment StoreEntitySet="CartDetail">
-          <ScalarProperty Name="CartId" ColumnName="CartId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
@@ -23,6 +15,53 @@
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chats">
+      <EntityTypeMapping TypeName="LOkopediaModel.Chat">
+        <MappingFragment StoreEntitySet="Chat">
+          <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ForumDetails">
+      <EntityTypeMapping TypeName="LOkopediaModel.ForumDetail">
+        <MappingFragment StoreEntitySet="ForumDetail">
+          <ScalarProperty Name="ForumId" ColumnName="ForumId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Forumms">
+      <EntityTypeMapping TypeName="LOkopediaModel.Forumm">
+        <MappingFragment StoreEntitySet="Forumm">
+          <ScalarProperty Name="ForumId" ColumnName="ForumId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="LOkopediaModel.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="HistoryDate" ColumnName="HistoryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryDetails">
+      <EntityTypeMapping TypeName="LOkopediaModel.HistoryDetail">
+        <MappingFragment StoreEntitySet="HistoryDetail">
+          <ScalarProperty Name="HistoryId" ColumnName="HistoryId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -38,6 +77,16 @@
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="LOkopediaModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="FirstUserId" ColumnName="FirstUserId" />
+          <ScalarProperty Name="SecondUserId" ColumnName="SecondUserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

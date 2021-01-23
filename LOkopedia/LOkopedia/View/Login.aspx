@@ -2,9 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="container mt-5 mb-5">
+    <div class="container" style="min-height:15vh;"></div>    
+    <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center">
-                <div class="col-4 card p-4">
+                <div class="col-4 card p-4 shadow">
                     <asp:Label ID="logText" runat="server" CssClass="text-center font-weight-bold" Font-Size="Larger" Text="Login"></asp:Label>
                     <form class="dropdown-menu">
                       <div class="form-group">

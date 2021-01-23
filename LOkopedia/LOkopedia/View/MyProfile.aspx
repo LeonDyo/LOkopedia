@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container mt-5 shadow">
+    <div class="container mt-5 mb-5 shadow" style="min-height:75vh;">
         <div class="card border-0">
             <div class="row">
                 <div class="col-6 p-5">
@@ -15,9 +15,10 @@
                                 <asp:Label ID="myName" Font-Size="XX-Large" CssClass="font-weight-bold" ForeColor="White" runat="server" Text=""></asp:Label>
                             </center>
                         </div>
-                        <div class="bg-white">
+                        <div class="bg-white pt-3">
                             <center>
-                                <asp:Button ID="upload" CssClass="m-4 pl-5 pr-5 btn bg-light border-dark font-weight-bold" runat="server" Text="Upload Photo" />
+                                <asp:Label ID="errorMessage" CssClass="font-weight-bold" ForeColor="Red" runat="server" Text=""></asp:Label>
+                                <asp:FileUpload ID="myPicture" CssClass="ml-5 mt-3 pb-4" runat="server"></asp:FileUpload>
                             </center>
                         </div>
                     </div>
@@ -53,7 +54,7 @@
                             <asp:Label ID="DobText" Font-Size="Larger" CssClass="font-weight-bold" runat="server" Text="Day of Birth"></asp:Label>
                         </div>
                         <div class="col-7">
-                            <asp:Label ID="dob" Font-Size="Larger" CssClass="font-weight-bold" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="dob" Font-Size="Medium" CssClass="font-weight-bold" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -61,7 +62,7 @@
                             <asp:Label ID="joinText" Font-Size="Larger" CssClass="font-weight-bold" runat="server" Text="Join Date"></asp:Label>
                         </div>
                         <div class="col-7">
-                            <asp:Label ID="join" Font-Size="Larger" CssClass="font-weight-bold" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="join" Font-Size="Medium" CssClass="font-weight-bold" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
                     <div class="row mt-4">

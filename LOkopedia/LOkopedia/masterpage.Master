@@ -34,15 +34,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light border-bottom bg-success">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <asp:LinkButton ID="logo" OnClick="logo_Click" CssClass="nodecoration" Font-Names="Bauhaus 93" ForeColor="ForestGreen" Font-Bold="true" Font-Size="XX-Large" runat="server">lokopedia</asp:LinkButton>
-      <asp:LinkButton ID="category" OnClick="category_Click" CssClass="nodecoration nav-item nav-link active mt-2 ml-5 font-weight-bold" runat="server">Category</asp:LinkButton>
-      <asp:TextBox ID="search" CssClass="nav-item nav-link ml-5 mt-2" Height="35" Width="1150" runat="server"></asp:TextBox>
-      <asp:ImageButton ID="find" Width="40" Height="35" CssClass="mt-2 ml-2 border-dark" ImageUrl="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png" runat="server" />
-      <asp:ImageButton ID="myCart" Width="40" Height="35" CssClass="mt-2 ml-5" ImageUrl="https://image.flaticon.com/icons/png/512/126/126083.png" runat="server" />
-      <asp:ImageButton ID="myPhoto" Width="40" Height="35" CssClass=" mt-2 ml-5 rounded-circle" runat="server" />
+      <asp:LinkButton ID="logo" OnClick="logo_Click" CssClass="nodecoration mr-5" Font-Names="Bauhaus 93" ForeColor="White" Font-Bold="true" Font-Size="XX-Large" runat="server">LOkopedia</asp:LinkButton>
+                <asp:DropDownList ID="categoryFilter" CssClass="btn ml-3 mt-1" Width="135" Height="40" runat="server">
+                    <asp:ListItem Value="0" Text="All Category"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="Beverages"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Fashion"></asp:ListItem>
+                    <asp:ListItem Value="3" Text="Electronic"></asp:ListItem>
+                    <asp:ListItem Value="4" Text="Beauty"></asp:ListItem>
+                </asp:DropDownList>
+        <asp:Button ID="goBtn" OnClick="goBtn_Click" CssClass="btn btn-primary mt-1 mr-5" Height="40" Font-Bold="true" runat="server" Text="Go" />
+      <asp:TextBox ID="search" CssClass="nav-item nav-link ml-5 mt-2" Height="35" Width="1000" runat="server"></asp:TextBox>
+      <asp:ImageButton ID="find" OnClick="find_Click" Width="40" Height="35" CssClass="mt-2 ml-2 border-dark" ImageUrl="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png" runat="server" />
+      <asp:ImageButton ID="myCart" OnClick="myCart_Click" Width="40" Height="35" CssClass="mt-2 ml-5" ImageUrl="https://image.flaticon.com/icons/png/512/126/126083.png" runat="server" />
+      <asp:Image ID="myPhotos" Width="40" Height="35" CssClass=" mt-2 ml-4 rounded-circle" runat="server"  />
       <%if (getID())
           {%>
         <div class="dropdown h-50">
@@ -52,12 +59,14 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <asp:LinkButton ID="myProfile" OnClick="myProfile_Click" CssClass="dropdown-item font-weight-bold" runat="server">My Profile</asp:LinkButton>
       <asp:LinkButton ID="myProduct" OnClick="myProduct_Click" CssClass="dropdown-item font-weight-bold" runat="server">My Product</asp:LinkButton>
+      <asp:LinkButton ID="myMessage" OnClick="myMessage_Click" CssClass="dropdown-item font-weight-bold" runat="server">My Message</asp:LinkButton>
+      <asp:LinkButton ID="myHistory" OnClick="myHistory_Click" CssClass="dropdown-item font-weight-bold" runat="server">My History</asp:LinkButton>
       <asp:LinkButton ID="logout" OnClick="logout_Click" CssClass="dropdown-item font-weight-bold" runat="server">Log out</asp:LinkButton>
     </div>
     <% }%>
 </div>
-        <asp:Button ID="login" OnClick="login_Click" CssClass=" font-weight-bold btn ml-5 mt-2" Font-Bold="true" Width="90" Height="35" BorderColor="ForestGreen" BorderWidth="3" BackColor="White" ForeColor="ForestGreen" Font-Size="10" runat="server" Text="Login" />
-      <asp:Button ID="register" OnClick="register_Click" CssClass="font-weight-bold btn ml-2 mt-2" Font-Bold="true" Width="90" Height="35" BorderColor="ForestGreen" BorderWidth="3" BackColor="ForestGreen" ForeColor="White" Font-Size="10" runat="server" Text="Register" />
+        <asp:Button ID="login" OnClick="login_Click" CssClass=" font-weight-bold btn ml-5 mt-2" Font-Bold="true" Width="90" Height="35" BorderColor="Green" BorderWidth="3" BackColor="White" ForeColor="ForestGreen" Font-Size="10" runat="server" Text="Login" />
+      <asp:Button ID="register" OnClick="register_Click" CssClass="font-weight-bold btn ml-2 mt-2" Font-Bold="true" Width="90" Height="35" BorderColor="White" BorderWidth="3" BackColor="ForestGreen" ForeColor="White" Font-Size="10" runat="server" Text="Register" />
     </div>
   </div>
 </nav>
@@ -72,7 +81,7 @@
            <asp:ImageButton OnClick="Facebook_Click" ID="ImageButton2" Width="30" ImageUrl="http://lawyersandsettlements.com/blog/wp-content/uploads/2015/09/facebook-logo.png" runat="server" />
             <asp:ImageButton OnClick="Twitter_Click" ID="ImageButton3" Width="30" ImageUrl="https://img.talkandroid.com/uploads/2016/01/twitter-app-logo.png" runat="server" />
       </div>
-      <div class="card-footer text-muted font-weight-bold">
+      <div class="card-footer border-white font-weight-bold">
         lokopedia company
       </div>
     </div>
@@ -88,7 +97,7 @@
            <asp:ImageButton OnClick="Facebook_Click" ID="Facebook" Width="30" ImageUrl="http://lawyersandsettlements.com/blog/wp-content/uploads/2015/09/facebook-logo.png" runat="server" />
             <asp:ImageButton OnClick="Twitter_Click" ID="Twitter" Width="30" ImageUrl="https://img.talkandroid.com/uploads/2016/01/twitter-app-logo.png" runat="server" />
       </div>
-      <div class="card-footer text-muted font-weight-bold">
+      <div class="card-footer border-white font-weight-bold">
         lokopedia company
       </div>
     </div>

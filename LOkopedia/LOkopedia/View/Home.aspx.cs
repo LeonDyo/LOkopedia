@@ -28,15 +28,20 @@ namespace LOkopedia.View
             return (Session["User_ID"] != null || cookie != null) ? true : false;
         }
 
-        private static List<Product> getAll()
+        private int getCategoryId()
         {
-            return ProductRepository.getAll();
+            return int.Parse(Request.QueryString["id"]);
+        }
+
+        private List<Product> getAll(int categoryId)
+        {
+            return ProductRepository.getAll(getUserId(), categoryId);
         }
 
         private void setData()
         {
             list = new List<Product>();
-            list = getAll();
+            list = getAll(getCategoryId());
             randomizeData(list);
          
             DataTable dt = new DataTable();
@@ -47,11 +52,28 @@ namespace LOkopedia.View
 
             for (int i = 0; i < list.Count; i++)
             {
-                dt.Rows.Add(list[i].ProductId, list[i].ProductName, list[i].ProductPrice.ToString(), list[i].ProductImage);
+                dt.Rows.Add(list[i].ProductId, list[i].ProductName, list[i].ProductPrice.ToString(), ConvertToImage(list[i].ProductImage));
             }
 
             ListView1.DataSource = dt;
             ListView1.DataBind();
+        }
+
+        private int getUserId()
+        {
+            int ID = -1;
+            HttpCookie cookie = Request.Cookies["UserInfo"];
+
+            if (Session["User_ID"] == null) ID = int.Parse(cookie["User_ID"].ToString());
+            else if (cookie == null) ID = int.Parse(Session["User_ID"].ToString());
+            else Response.Redirect("/View/Login.aspx");
+            return ID;
+        }
+
+        public string ConvertToImage(byte[] imageBytes)
+        {
+            string ImageUrl = "data:image/png;base64," + Convert.ToBase64String(imageBytes, 0, imageBytes.Length);
+            return ImageUrl;
         }
 
         private void randomizeData(List<Product> list)

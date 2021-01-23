@@ -8,7 +8,7 @@ namespace LOkopedia.Factory
 {
     public class UserFactory
     {
-        public static User create(String email, String password, String username, String photo, DateTime dob, DateTime joinDate, String phone)
+        public static User create(String email, String password, String username, byte[] photo, DateTime dob, DateTime joinDate, String phone)
         {
             User user = new User();
             user.UserEmail = email;

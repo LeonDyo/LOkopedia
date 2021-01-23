@@ -150,6 +150,24 @@ namespace LOkopedia.View
         protected global::System.Web.UI.WebControls.TextBox confirm;
 
         /// <summary>
+        /// photo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label photo;
+
+        /// <summary>
+        /// myPicture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload myPicture;
+
+        /// <summary>
         /// errorMsg control.
         /// </summary>
         /// <remarks>

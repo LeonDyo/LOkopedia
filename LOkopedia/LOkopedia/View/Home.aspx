@@ -35,9 +35,9 @@
           </a>
         </div>
       </div>
-
     </div>
-    <div class="container mt-5 mb-5">
+
+    <div class="container mt-5 mb-5 shadow" style="min-height:65vh;">
             <div class="row">
     <asp:ListView ID="ListView1" runat="server">
         <ItemTemplate>
@@ -54,5 +54,4 @@
     </asp:ListView>
             </div>
     </div>
-    <br /><br /><br /><br /><br /><br />
 </asp:Content>

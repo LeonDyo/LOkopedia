@@ -17,22 +17,29 @@ namespace LOkopedia.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.CartDetails = new HashSet<CartDetail>();
+            this.Carts = new HashSet<Cart>();
+            this.Forumms = new HashSet<Forumm>();
+            this.HistoryDetails = new HashSet<HistoryDetail>();
         }
     
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public long ProductPrice { get; set; }
-        public string ProductImage { get; set; }
+        public byte[] ProductImage { get; set; }
         public string ProductDescription { get; set; }
         public double ProductRating { get; set; }
         public int CategoryId { get; set; }
         public int UserId { get; set; }
         public System.DateTime UploadDate { get; set; }
+        public int IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartDetail> CartDetails { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Forumm> Forumms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoryDetail> HistoryDetails { get; set; }
         public virtual User User { get; set; }
     }
 }

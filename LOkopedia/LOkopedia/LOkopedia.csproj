@@ -97,7 +97,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Style\Style.css" />
-    <Content Include="View\CategoryPage.aspx" />
+    <Content Include="View\ChatList.aspx" />
+    <Content Include="View\ChatPage.aspx" />
+    <Content Include="View\HistoryDetailPage.aspx" />
+    <Content Include="View\HistoryPage.aspx" />
     <Content Include="View\Home.aspx" />
     <Content Include="View\Login.aspx" />
     <Content Include="View\ManageProduct.aspx" />
@@ -111,7 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory\CartFactory.cs" />
+    <Compile Include="Factory\ChatFactory.cs" />
+    <Compile Include="Factory\ForumFactory.cs" />
+    <Compile Include="Factory\HistoryFactory.cs" />
     <Compile Include="Factory\ProductFactory.cs" />
+    <Compile Include="Factory\RoomFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="masterpage.Master.cs">
       <DependentUpon>masterpage.Master</DependentUpon>
@@ -123,10 +130,22 @@
     <Compile Include="Model\Cart.cs">
       <DependentUpon>LOkopediaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CartDetail.cs">
+    <Compile Include="Model\Category.cs">
       <DependentUpon>LOkopediaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Category.cs">
+    <Compile Include="Model\Chat.cs">
+      <DependentUpon>LOkopediaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ForumDetail.cs">
+      <DependentUpon>LOkopediaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Forumm.cs">
+      <DependentUpon>LOkopediaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\History.cs">
+      <DependentUpon>LOkopediaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HistoryDetail.cs">
       <DependentUpon>LOkopediaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LOkopediaModel.Context.cs">
@@ -147,19 +166,47 @@
     <Compile Include="Model\Product.cs">
       <DependentUpon>LOkopediaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Room.cs">
+      <DependentUpon>LOkopediaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\User.cs">
       <DependentUpon>LOkopediaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CartRepository.cs" />
+    <Compile Include="Repository\ChatRepository.cs" />
+    <Compile Include="Repository\ForumRepository.cs" />
+    <Compile Include="Repository\HistoryRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-    <Compile Include="View\CategoryPage.aspx.cs">
-      <DependentUpon>CategoryPage.aspx</DependentUpon>
+    <Compile Include="View\ChatList.aspx.cs">
+      <DependentUpon>ChatList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\CategoryPage.aspx.designer.cs">
-      <DependentUpon>CategoryPage.aspx</DependentUpon>
+    <Compile Include="View\ChatList.aspx.designer.cs">
+      <DependentUpon>ChatList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatPage.aspx.cs">
+      <DependentUpon>ChatPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ChatPage.aspx.designer.cs">
+      <DependentUpon>ChatPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\HistoryDetailPage.aspx.cs">
+      <DependentUpon>HistoryDetailPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\HistoryDetailPage.aspx.designer.cs">
+      <DependentUpon>HistoryDetailPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\HistoryPage.aspx.cs">
+      <DependentUpon>HistoryPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\HistoryPage.aspx.designer.cs">
+      <DependentUpon>HistoryPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -256,7 +303,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
+    <Folder Include="App_Data\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>

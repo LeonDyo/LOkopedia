@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -35,32 +36,67 @@ namespace LOkopedia.View
             }
             else
             {
-                if(int.Parse(day) < 1 || int.Parse(day) > 31 || int.Parse(month) < 1 || int.Parse(month) > 12 || int.Parse(year) > 2021)
+                
+                if (!email.EndsWith("@gmail.com") && !email.EndsWith("@yahoo.com"))
                 {
-                    errorMsg.Text = "Date of Birth is not correct !";
+                    errorMsg.Text = "Email format is not correct";
+                    flag = 0;
                 }
                 else
                 {
-                    if (passInput.Text.ToString().Equals(confirm.Text.ToString()))
+                    if (int.Parse(day) < 1 || int.Parse(day) > 31 || int.Parse(month) < 1 || int.Parse(month) > 12 || int.Parse(year) > 2021)
                     {
-                        String temp = day + "/" + month + "/" + year;
-                        DateTime dob = DateTime.Parse(temp);
-
-                        if(!UserRepository.getExistingUser(email, username))
-                        {
-                            UserRepository.createUser(email, password, username, "https://cdn.idntimes.com/content-images/post/20200915/em3-pjfvuaekuha-f9e2841fad1c1f1fad5433c280c75b70_600x400.jpg", dob, joinDate, phone);
-                            flag = 1;
-                            Response.Redirect("/View/Login.aspx");
-                        }
-                        else
-                        {
-                            errorMsg.Text = "User already exist !";
-                            flag = 0;
-                        }
+                        errorMsg.Text = "Date of Birth is not correct !";
+                        flag = 0;
                     }
                     else
                     {
-                        errorMsg.Text = "Password not match";
+                        if (passInput.Text.ToString().Equals(confirm.Text.ToString()))
+                        {
+                            String temp = day + "/" + month + "/" + year;
+                            DateTime dob = DateTime.Parse(temp);
+
+                            if(!UserRepository.getExistingUser(email, username))
+                            {
+                                HttpPostedFile postedFile = myPicture.PostedFile;
+                                string filename = Path.GetFileName(postedFile.FileName);
+                                string fileExtension = Path.GetExtension(filename);
+
+                                if (fileExtension.ToLower().Equals(".jpg") || fileExtension.ToLower().Equals(".png") || fileExtension.Equals(""))
+                                {
+                                    Stream stream = postedFile.InputStream;
+                                    BinaryReader binaryReader = new BinaryReader(stream);
+                                    byte[] bytes = binaryReader.ReadBytes((int)stream.Length);
+
+                                    if(bytes.Length == 0)
+                                    {
+                                        errorMsg.Text = "Choose your profile picture";
+                                        flag = 0;
+                                    }
+                                    else
+                                    {
+                                        UserRepository.createUser(email, password, username, bytes, dob, joinDate, phone);
+
+                                        flag = 1;
+                                        Response.Redirect("/View/Login.aspx");
+                                    }
+                                }
+                                else
+                                {
+                                    errorMsg.Text = "Profile picture extension must be '.jpg' or '.png'";
+                                    flag = 0;
+                                }
+                            }
+                            else
+                            {
+                                errorMsg.Text = "User already exist !";
+                                flag = 0;
+                            }
+                        }
+                        else
+                        {
+                            errorMsg.Text = "Password not match";
+                        }
                     }
                 }
             }

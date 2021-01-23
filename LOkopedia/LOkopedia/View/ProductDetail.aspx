@@ -14,14 +14,6 @@
                 </div>
                 <div class="col-6 p-5">
                     <asp:Label ID="productName" Font-Size="Large" CssClass="font-weight-bold" runat="server"></asp:Label>
-                    <div class="row mt-3 ml-0">
-
-                        <asp:Label ID="ratingView" CssClass="pr-2" Font-Size="Medium" runat="server"></asp:Label>
-                        <%for (int i = 0; i < getRating(); i++){ %>
-                            <asp:Image ID="rate" Width="20" Height="20" ImageUrl="https://www.freepnglogos.com/uploads/star-png/star-vector-png-transparent-image-pngpix-21.png" runat="server"></asp:Image>
-                        <%}%>
-                        <asp:Label ID="sold" CssClass="ml-3" Font-Size="Medium" runat="server">10000 Products Sold</asp:Label>
-                    </div>
                     <div class="row mt-3">
                         <div class="col-4">
                             <asp:Label ID="priceText" Font-Size="Medium" runat="server">Price</asp:Label>
@@ -56,6 +48,17 @@
                             <asp:Button ID="addBtn" Width="100" OnClick="addBtn_Click" CssClass="btn btn-primary" runat="server" Text="Add" />
                         </div>
                     </div>
+                    <div class="row mt-4 ml-2">
+                            <asp:Label ID="errorMessage" Font-Size="Medium" Font-Bold="true" Visible="false" ForeColor="Red" runat="server"></asp:Label>
+                    </div>
+                    <div class="row mt-3 pt-5">
+                        <div class="col-2">
+                            <asp:ImageButton ID="chatBtn" OnClick="chatBtn_Click" Width="60" Height="50" CssClass="border-dark" ImageUrl="https://www.pngarts.com/files/1/Message-PNG-Background-Image.png" runat="server" />
+                        </div>
+                        <div class="col-7 mt-3">
+                            <asp:Label ID="chat" Font-Size="Medium" Font-Bold="true" Text="Chat seller" runat="server"></asp:Label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,41 +89,48 @@
                     </div>
             <%}%>
             <%else if (flag == 2) {%>
-              <%for (int i = 0; i < 5; i++){%>
-               <div class="col-12 mt-5">
-                   <div class="card bg-light">
-                       <div class="row">
-                           <div class="col-1">
-                               <asp:ImageButton ID="ImageButton1" Width="40" Height="35" CssClass="mt-2 ml-5 rounded-circle" ImageUrl="https://images.soco.id/852-nam-do-san-2.jpg.jpg" runat="server" />
+               <asp:ListView ID="ListView1" runat="server">
+                   <ItemTemplate>
+                       <div class="col-12 mt-5">
+                           <div class="card bg-light">
+                               <div class="row">
+                                   <div class="col-1">
+                                       <img alt="" width="40" height="35" class="mt-2 ml-5 rounded-circle" src="<%#Eval("UserPhoto")%>"/>
+                                   </div>
+                                   <div class="col-8 m-3">
+                                        <asp:Label ID="userName" Font-Bold="true" Font-Size="Medium" runat="server"><%#Eval("UserName")%></asp:Label>
+                                   </div>
+                                   <div class="col-2 m-3">
+                                        <asp:Label ID="postDate" Font-Bold="true" Font-Size="Medium" runat="server"><%#Eval("PostDate")%></asp:Label>
+                                   </div>
+                               </div>
                            </div>
-                           <div class="col-5 m-3">
-                                <asp:Label ID="userName" Font-Bold="true" Font-Size="Medium" runat="server">Nam Do San</asp:Label>
+                           <div class="card border-top-0">
+                               <div class="row m-4">
+                                   <div class="col-12">
+                                        <asp:Label ID="forum" Font-Bold="true" Font-Size="Medium" runat="server"><%#Eval("Review")%></asp:Label>
+                                   </div>
+                               </div>
                            </div>
                        </div>
-                   </div>
-                   <div class="card border-top-0">
-                       <div class="row m-4">
-                           <div class="col-12">
-                                <asp:Label ID="forum" Font-Bold="true" Font-Size="Medium" runat="server">This PC is really cool and nice ! ! !</asp:Label>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-                    <%}%>
+                   </ItemTemplate>
+               </asp:ListView>
+
                     
             <div class="col-12 mt-5 mb-5">
                    <div class="card bg-light">
                        <div class="row mt-2">
                            <div class="col-1">
-                               <asp:ImageButton ID="ImageButton" Width="40" Height="35" CssClass="mt-2 ml-5 rounded-circle" ImageUrl="https://images.soco.id/852-nam-do-san-2.jpg.jpg" runat="server" />
+                               <asp:Image ID="anonimImage" Width="40" Height="35" CssClass="mt-2 ml-5 rounded-circle" runat="server"></asp:Image>
                            </div>
                            <div class="col-5 m-3">
-                                <asp:Label ID="useame" Font-Bold="true" Font-Size="Medium" runat="server">Nam Do San</asp:Label>
+                                <asp:Label ID="anonim" Font-Bold="true" Font-Size="Medium" runat="server"></asp:Label>
                            </div>
                        </div>
                        <div class="pb-4">
-                           <asp:TextBox ID="search" CssClass="nav-item nav-link ml-5 mt-2" Height="130" Width="980" runat="server"></asp:TextBox>
-                            <asp:Button ID="sendBtn" CssClass="btn btn-primary mt-4 ml-5" Width="100" runat="server" Text="Send" />
+                           <asp:TextBox ID="forumField" CssClass="nav-item nav-link ml-5 mt-2" Height="130" Width="980" runat="server"></asp:TextBox>
+                           <asp:Label ID="errorMsg" Font-Bold="true" Font-Size="Medium" CssClass="ml-5" Visible="false" ForeColor="Red" Text="* Field cannot be empty *" runat="server"></asp:Label><br />
+                           <asp:Button ID="sendBtn" OnClick="sendBtn_Click" CssClass="btn btn-primary mt-4 ml-5" Width="100" runat="server" Text="Send" />
                        </div>
                    </div>
               </div>

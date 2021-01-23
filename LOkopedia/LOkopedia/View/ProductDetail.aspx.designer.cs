@@ -33,33 +33,6 @@ namespace LOkopedia.View
         protected global::System.Web.UI.WebControls.Label productName;
 
         /// <summary>
-        /// ratingView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ratingView;
-
-        /// <summary>
-        /// rate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image rate;
-
-        /// <summary>
-        /// sold control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label sold;
-
-        /// <summary>
         /// priceText control.
         /// </summary>
         /// <remarks>
@@ -114,6 +87,33 @@ namespace LOkopedia.View
         protected global::System.Web.UI.WebControls.Button addBtn;
 
         /// <summary>
+        /// errorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorMessage;
+
+        /// <summary>
+        /// chatBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton chatBtn;
+
+        /// <summary>
+        /// chat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label chat;
+
+        /// <summary>
         /// descriptionBtn control.
         /// </summary>
         /// <remarks>
@@ -141,58 +141,49 @@ namespace LOkopedia.View
         protected global::System.Web.UI.WebControls.Label description;
 
         /// <summary>
-        /// ImageButton1 control.
+        /// ListView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::System.Web.UI.WebControls.ListView ListView1;
 
         /// <summary>
-        /// userName control.
+        /// anonimImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userName;
+        protected global::System.Web.UI.WebControls.Image anonimImage;
 
         /// <summary>
-        /// forum control.
+        /// anonim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label forum;
+        protected global::System.Web.UI.WebControls.Label anonim;
 
         /// <summary>
-        /// ImageButton control.
+        /// forumField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton;
+        protected global::System.Web.UI.WebControls.TextBox forumField;
 
         /// <summary>
-        /// useame control.
+        /// errorMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label useame;
-
-        /// <summary>
-        /// search control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox search;
+        protected global::System.Web.UI.WebControls.Label errorMsg;
 
         /// <summary>
         /// sendBtn control.

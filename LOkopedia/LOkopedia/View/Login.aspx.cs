@@ -14,7 +14,7 @@ namespace LOkopedia.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (isLogin()) Response.Redirect("/View/Home.aspx");
+            if (isLogin()) Response.Redirect("/View/Home.aspx?id=0");
         }
 
         private Boolean isLogin()
@@ -52,7 +52,7 @@ namespace LOkopedia.View
                     {
                         Session["User_ID"] = user.UserId;
                     }
-                        Response.Redirect("/View/Home.aspx");
+                        Response.Redirect("/View/Home.aspx?id=0");
                 }
                 else
                 {

@@ -3,16 +3,9 @@
   <EntityType Name="Cart">
     <Key>
       <PropertyRef Name="CartId" />
-    </Key>
-    <Property Name="CartId" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="UserId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CartDetail">
-    <Key>
-      <PropertyRef Name="CartId" />
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="CartId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CartId" Type="int" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
   </EntityType>
@@ -23,6 +16,52 @@
     <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="ChatId" />
+    </Key>
+    <Property Name="ChatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Message" Type="text" Nullable="false" />
+    <Property Name="SendDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ForumDetail">
+    <Key>
+      <PropertyRef Name="ForumId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="PostDate" />
+    </Key>
+    <Property Name="ForumId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Review" Type="varchar(max)" Nullable="false" />
+    <Property Name="PostDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Forumm">
+    <Key>
+      <PropertyRef Name="ForumId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ForumId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="HistoryId" />
+    </Key>
+    <Property Name="HistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="HistoryDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HistoryDetail">
+    <Key>
+      <PropertyRef Name="HistoryId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="HistoryId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ProductId" />
@@ -30,12 +69,21 @@
     <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProductName" Type="varchar(max)" Nullable="false" />
     <Property Name="ProductPrice" Type="bigint" Nullable="false" />
-    <Property Name="ProductImage" Type="text" Nullable="false" />
+    <Property Name="ProductImage" Type="varbinary(max)" Nullable="false" />
     <Property Name="ProductDescription" Type="text" Nullable="false" />
     <Property Name="ProductRating" Type="float" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="UploadDate" Type="date" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstUserId" Type="int" Nullable="false" />
+    <Property Name="SecondUserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -45,12 +93,12 @@
     <Property Name="UserEmail" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="UserPhoto" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserPhoto" Type="varbinary(max)" />
     <Property Name="UserDob" Type="datetime" Nullable="false" />
     <Property Name="JoinDate" Type="datetime" Nullable="false" />
     <Property Name="UserPhone" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Cart__UserId__10566F31">
+  <Association Name="FK__Cart__CartId__03BB8E22">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
     <ReferentialConstraint>
@@ -58,35 +106,107 @@
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="Cart">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__CartDetai__CartI__09A971A2">
-    <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
-    <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cart">
-        <PropertyRef Name="CartId" />
-      </Principal>
-      <Dependent Role="CartDetail">
         <PropertyRef Name="CartId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CartDetai__Produ__0A9D95DB">
+  <Association Name="FK__Cart__ProductId__04AFB25B">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="ProductId" />
       </Principal>
-      <Dependent Role="CartDetail">
+      <Dependent Role="Cart">
         <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__Categor__75A278F5">
+  <Association Name="FK__Chat__RoomId__5E8A0973">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Chat__UserId__5D95E53A">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ForumDeta__UserI__4A8310C6">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ForumDetail" Type="Self.ForumDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ForumDetail">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Forumm__ProductI__44CA3770">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Forumm" Type="Self.Forumm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Forumm">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__History__UserId__09746778">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistoryDe__Histo__0F2D40CE">
+    <End Role="History" Type="Self.History" Multiplicity="1" />
+    <End Role="HistoryDetail" Type="Self.HistoryDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="History">
+        <PropertyRef Name="HistoryId" />
+      </Principal>
+      <Dependent Role="HistoryDetail">
+        <PropertyRef Name="HistoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistoryDe__Produ__0E391C95">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="HistoryDetail" Type="Self.HistoryDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="HistoryDetail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Categor__245D67DE">
     <End Role="Category" Type="Self.Category" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -100,7 +220,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__UserId__114A936A">
+  <Association Name="FK__Product__UserId__236943A5">
     <End Role="User" Type="Self.User" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -114,31 +234,92 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Room__FirstUserI__55009F39">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="FirstUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Room__SecondUser__55F4C372">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="SecondUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="LOkopediaModelStoreContainer">
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CartDetail" EntityType="Self.CartDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ForumDetail" EntityType="Self.ForumDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Forumm" EntityType="Self.Forumm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryDetail" EntityType="Self.HistoryDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Cart__UserId__10566F31" Association="Self.FK__Cart__UserId__10566F31">
+    <AssociationSet Name="FK__Cart__CartId__03BB8E22" Association="Self.FK__Cart__CartId__03BB8E22">
       <End Role="User" EntitySet="User" />
       <End Role="Cart" EntitySet="Cart" />
     </AssociationSet>
-    <AssociationSet Name="FK__CartDetai__CartI__09A971A2" Association="Self.FK__CartDetai__CartI__09A971A2">
-      <End Role="Cart" EntitySet="Cart" />
-      <End Role="CartDetail" EntitySet="CartDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CartDetai__Produ__0A9D95DB" Association="Self.FK__CartDetai__Produ__0A9D95DB">
+    <AssociationSet Name="FK__Cart__ProductId__04AFB25B" Association="Self.FK__Cart__ProductId__04AFB25B">
       <End Role="Product" EntitySet="Product" />
-      <End Role="CartDetail" EntitySet="CartDetail" />
+      <End Role="Cart" EntitySet="Cart" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__Categor__75A278F5" Association="Self.FK__Product__Categor__75A278F5">
+    <AssociationSet Name="FK__Chat__RoomId__5E8A0973" Association="Self.FK__Chat__RoomId__5E8A0973">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Chat__UserId__5D95E53A" Association="Self.FK__Chat__UserId__5D95E53A">
+      <End Role="User" EntitySet="User" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ForumDeta__UserI__4A8310C6" Association="Self.FK__ForumDeta__UserI__4A8310C6">
+      <End Role="User" EntitySet="User" />
+      <End Role="ForumDetail" EntitySet="ForumDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Forumm__ProductI__44CA3770" Association="Self.FK__Forumm__ProductI__44CA3770">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Forumm" EntitySet="Forumm" />
+    </AssociationSet>
+    <AssociationSet Name="FK__History__UserId__09746778" Association="Self.FK__History__UserId__09746778">
+      <End Role="User" EntitySet="User" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistoryDe__Histo__0F2D40CE" Association="Self.FK__HistoryDe__Histo__0F2D40CE">
+      <End Role="History" EntitySet="History" />
+      <End Role="HistoryDetail" EntitySet="HistoryDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistoryDe__Produ__0E391C95" Association="Self.FK__HistoryDe__Produ__0E391C95">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="HistoryDetail" EntitySet="HistoryDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Categor__245D67DE" Association="Self.FK__Product__Categor__245D67DE">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__UserId__114A936A" Association="Self.FK__Product__UserId__114A936A">
+    <AssociationSet Name="FK__Product__UserId__236943A5" Association="Self.FK__Product__UserId__236943A5">
       <End Role="User" EntitySet="User" />
       <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Room__FirstUserI__55009F39" Association="Self.FK__Room__FirstUserI__55009F39">
+      <End Role="User" EntitySet="User" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Room__SecondUser__55F4C372" Association="Self.FK__Room__SecondUser__55F4C372">
+      <End Role="User" EntitySet="User" />
+      <End Role="Room" EntitySet="Room" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

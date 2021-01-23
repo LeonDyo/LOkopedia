@@ -45,14 +45,14 @@ namespace LOkopedia
             if (Session["User_ID"] == null && cookie == null)
             {
                 myCart.Visible= false;
-                myPhoto.Visible = false;
+                myPhotos.Visible = false;
                 login.Visible = true;
                 register.Visible = true;
             }
             else
             {
                 myCart.Visible = true;
-                myPhoto.Visible = true;
+                myPhotos.Visible = true;
                 login.Visible = false;
                 register.Visible = false;
             }
@@ -62,8 +62,29 @@ namespace LOkopedia
         {
             credentials = getCredentials();
             User user = getCurrentUser(credentials);
-            myName.Text = user.UserName;
-            myPhoto.ImageUrl = user.UserPhoto;
+            myName.Text = trimName(user.UserName);
+            myPhotos.ImageUrl = ConvertToImage(user.UserPhoto);
+        }
+
+        private String trimName(String username)
+        {
+            String temp = "";
+
+            if(username.Length > 5)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    temp += username[i];
+                }
+                return temp += "...";
+            }
+            return username;
+        }
+
+        public string ConvertToImage(byte[] imageBytes)
+        {
+            string ImageUrl = "data:image/png;base64," + Convert.ToBase64String(imageBytes, 0, imageBytes.Length);
+            return ImageUrl;
         }
 
         private int getCredentials()
@@ -126,17 +147,37 @@ namespace LOkopedia
 
         protected void logo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/View/Home.aspx");
-        }
-
-        protected void category_Click(object sender, EventArgs e)
-        {
-
+            Response.Redirect("/View/Home.aspx?id=0");
         }
 
         protected void myProduct_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/View/ManageProduct.aspx?id="+credentials.ToString());
+            Response.Redirect("/View/ManageProduct.aspx");
+        }
+
+        protected void find_Click(object sender, ImageClickEventArgs e)
+        {
+            if(!search.Text.Equals("")) Response.Redirect("/View/Search.aspx?query="+search.Text);
+        }
+
+        protected void myCart_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("/View/MyCart.aspx");
+        }
+
+        protected void myMessage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/View/ChatList.aspx");
+        }
+
+        protected void myHistory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/View/HistoryPage.aspx");
+        }
+
+        protected void goBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/View/Home.aspx?id="+categoryFilter.SelectedValue.ToString());
         }
     }
 }

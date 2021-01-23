@@ -42,13 +42,22 @@ namespace LOkopedia
         protected global::System.Web.UI.WebControls.LinkButton logo;
 
         /// <summary>
-        /// category control.
+        /// categoryFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton category;
+        protected global::System.Web.UI.WebControls.DropDownList categoryFilter;
+
+        /// <summary>
+        /// goBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button goBtn;
 
         /// <summary>
         /// search control.
@@ -78,13 +87,13 @@ namespace LOkopedia
         protected global::System.Web.UI.WebControls.ImageButton myCart;
 
         /// <summary>
-        /// myPhoto control.
+        /// myPhotos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton myPhoto;
+        protected global::System.Web.UI.WebControls.Image myPhotos;
 
         /// <summary>
         /// myName control.
@@ -112,6 +121,24 @@ namespace LOkopedia
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton myProduct;
+
+        /// <summary>
+        /// myMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton myMessage;
+
+        /// <summary>
+        /// myHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton myHistory;
 
         /// <summary>
         /// logout control.

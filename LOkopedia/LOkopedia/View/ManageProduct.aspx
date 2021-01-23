@@ -5,7 +5,7 @@
     <div class="mt-4 ml-3">
         <asp:Button ID="insertBtn" OnClick="insertBtn_Click" Font-Bold="true" CssClass="btn btn-primary" Width="150" runat="server" Text="Insert Product" />
     </div>
-    <%if (flag == 1){%>
+    <%if (flag == 1) {%>
     <div class="container p-5 mt-3 border shadow">
         <div class="text-right">
              <asp:Button ID="close" OnClick="close_Click" CssClass="font-weight-bold btn" Font-Bold="true" ForeColor="Gray" Font-Size="10" runat="server" Text="X" />
@@ -16,55 +16,65 @@
             <input id="productName" class="card p-2" style="width:20vw;" placeholder="Product Name" type="text" runat="server" />
         </div>
         <div class="mt-3">
-            <input id="productPrice" class="card p-2" style="width:20vw;" placeholder="Product Price" type="text" runat="server" />
+            <input id="productPrice" class="card p-2" style="width:20vw;" placeholder="Product Price" type="number" runat="server" />
         </div>
         <div class="mt-3">
             <textarea id="productDescription" class="card p-2" style="width:20vw; height:15vh;" placeholder="Product Description" rows="2" cols="20" runat="server"></textarea>
         </div>
-        <div class="mt-3">
-            <div class="container-fluid row">
+        <div class="mt-3 ml-5">
+            <div class="container-fluid row pb-3 justify-content-center ml-5 pl-4">
+                <asp:DropDownList ID="DropDownList1" Width="110" CssClass="btn-success btn ml-5" runat="server">
+                    <asp:ListItem Value="0" Text="Category"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="Beverages"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Fashion"></asp:ListItem>
+                    <asp:ListItem Value="3" Text="Electronic"></asp:ListItem>
+                    <asp:ListItem Value="4" Text="Beauty"></asp:ListItem>
+                </asp:DropDownList>
                 <div class="col-6">
-                    <div class="dropdown float-right pr-5">
-                      <button class="btn btn-success dropdown-toggle font-weight-bold" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <asp:Label ID="productCategory" runat="server" Text="Category"></asp:Label>
-                      </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <asp:LinkButton ID="beverageBtn" OnClick="beverageBtn_Click" CssClass="dropdown-item font-weight-bold" runat="server">Beverages</asp:LinkButton>
-                              <asp:LinkButton ID="fashionBtn" OnClick="fashionBtn_Click" CssClass="dropdown-item font-weight-bold" runat="server">Fashion</asp:LinkButton>
-                              <asp:LinkButton ID="electronicBtn" OnClick="electronicBtn_Click" CssClass="dropdown-item font-weight-bold" runat="server">Electronic</asp:LinkButton>
-                              <asp:LinkButton ID="beautyBtn" OnClick="beautyBtn_Click" CssClass="dropdown-item font-weight-bold" runat="server">Beauty</asp:LinkButton>
-                            </div>
-                        </div>
-                    </div>
-                <div class="col-6">
-                    <asp:FileUpload ID="productImage" CssClass="btn-block float-left" runat="server"></asp:FileUpload>
+                    <asp:FileUpload ID="productImage" CssClass="btn-block ml-5" runat="server"></asp:FileUpload>
                 </div>
             </div>
+             <asp:Label ID="errorMsg" runat="server" CssClass="font-weight-bold" ForeColor="Red" Text=""></asp:Label>
         </div>
-             <asp:Button ID="addBtn" CssClass="btn-success font-weight-bold btn mt-5" Font-Bold="true" Width="110" ForeColor="White" Font-Size="10" runat="server" Text="Add" />
+             <asp:Button ID="addBtn" CssClass="btn-success font-weight-bold btn mt-3" OnClick="addBtn_Click" Font-Bold="true" Width="110" ForeColor="White" Font-Size="10" runat="server" Text="Add" />
         </center>
     </div>
     <%}%>
 
-        <div class="container mt-5 mb-5">
+    <%if (count > 0)
+        {%>
+    <div class="container mt-5 mb-5 shadow" style="min-height:65vh;">
             <div class="row">
-    <%for (int i = 0; i < 16; i++){%>
-                    <div class="card col-3 text-center">
-                        <div class="card-body">
-                                <img alt="" width="210" height="230" src="https://redbottle.com.au/wp-content/uploads/2019/12/jinro-chamisul-soju.jpg"/>
-                                <div class="font-weight-bold">Soju</div>
-                                <div class="font-weight-bold">₩ 120</div>
-                            <input id="manageBtn" class="btn-outline-success font-weight-bold btn mt-1 ml-2" onclick="goToManage(<%=i%>)" type="button" value="Manage" />
-                           </div>
-                     </div>
-    <%}%>
+    <asp:ListView ID="ListView1" runat="server">
+        <ItemTemplate>
+                <div class="card col-3 text-center">
+                    <div class="card-body">
+                        <a style="color:black; text-decoration:none" href="ProductDetail.aspx?id=<%#Eval("ProductId")%>">
+                            <img alt="" width="210" height="230" src="<%#Eval("ProductImage")%>"/>
+                            <div class="font-weight-bold"><%#Eval("ProductName")%></div>
+                        </a>
+                            <div class="font-weight-bold">₩ <%#Eval("ProductPrice")%></div>
+                            <input id="manageBtn" class="btn-outline-success font-weight-bold btn mt-1" onclick="goToManage(<%#Eval("ProductId")%>)" type="button" value="Manage" />
+                    </div>
+                </div>
+        </ItemTemplate>
+    </asp:ListView>
             </div>
     </div>
+    <%}%>
+    <%else{ %>
+            <div class="container text-center font-weight-bold mt-5" style="min-height:70vh; font-size:30px;">
+                <br /><br /><br /><br /><br /><br /><br />
+                Your have no product !
+        </div>
+    <%} %>
+
+
     <script>
         function goToManage(a) {
             var temp = "Manage.aspx?id="
-            var loc = String(temp)+a
-            location.href = loc
+            var loc = temp + a;
+            location.href = loc;
         }
     </script>
 </asp:Content>

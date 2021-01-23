@@ -26,9 +26,14 @@ namespace LOkopedia.Model
         }
     
         public virtual DbSet<Cart> Carts { get; set; }
-        public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
+        public virtual DbSet<ForumDetail> ForumDetails { get; set; }
+        public virtual DbSet<Forumm> Forumms { get; set; }
+        public virtual DbSet<History> Histories { get; set; }
+        public virtual DbSet<HistoryDetail> HistoryDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

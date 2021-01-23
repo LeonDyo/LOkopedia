@@ -8,12 +8,14 @@ namespace LOkopedia.Factory
 {
     public class CartFactory
     {
-        public static Cart create(int cartId, int userId)
+
+        public static Cart create(int cartId, int productId, int quantity)
         {
-            Cart cart = new Cart();
-            cart.CartId = "C00" + cartId;
-            cart.UserId = userId;
-            return cart;
+            Cart cartDetail = new Cart();
+            cartDetail.CartId = cartId;
+            cartDetail.ProductId = productId;
+            cartDetail.Quantity = quantity;
+            return cartDetail;
         }
     }
 }
