@@ -13,6 +13,8 @@ namespace LOkopedia.View
     public partial class ChatList : System.Web.UI.Page
     {
         List<User> list;
+        protected static int count;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -37,6 +39,8 @@ namespace LOkopedia.View
             dt.Columns.Add("UserId");
             dt.Columns.Add("UserName");
             dt.Columns.Add("UserPhoto");
+
+            count = list.Count;
 
             for (int i = 0; i < list.Count; i++)
             {

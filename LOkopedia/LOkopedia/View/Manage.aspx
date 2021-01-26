@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="container p-5 mt-3 border shadow" style="min-height:75vh;">
+        <div class="container p-5 mt-3 mb-3 border shadow" style="min-height:75vh;">
             <center>
                     <asp:Label ID="ads" Font-Bold="true" Font-Size="Larger" runat="server">Manage Product</asp:Label>
             </center>

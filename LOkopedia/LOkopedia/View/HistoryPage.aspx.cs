@@ -14,7 +14,7 @@ namespace LOkopedia.View
     public partial class HistoryPage : System.Web.UI.Page
     {
         List<History> list;
-
+        protected static int count;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -37,6 +37,8 @@ namespace LOkopedia.View
             DataTable dt = new DataTable();
             dt.Columns.Add("HistoryId");
             dt.Columns.Add("HistoryDate");
+
+            count = list.Count;
 
             for (int i = 0; i < list.Count; i++)
             {

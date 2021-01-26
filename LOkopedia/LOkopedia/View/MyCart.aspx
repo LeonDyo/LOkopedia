@@ -12,7 +12,7 @@
                         <img Width="100" Height="100" src="<%#Eval("ProductImage")%>" class="mt-3 ml-5"></img>
                     </div>
                     <div class="col-8">
-                        <div class="mt-4">
+                        <div class="mt-4 font-weight-bold">
                             <p><%#Eval("ProductName")%></p>
                             <p>₩ <%#Eval("ProductPrice")%></p>
                             <p>Quantity: <%#Eval("Quantity")%></p>

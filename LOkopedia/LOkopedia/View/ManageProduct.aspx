@@ -49,11 +49,8 @@
         <ItemTemplate>
                 <div class="card col-3 text-center">
                     <div class="card-body">
-                        <a style="color:black; text-decoration:none" href="ProductDetail.aspx?id=<%#Eval("ProductId")%>">
                             <img alt="" width="210" height="230" src="<%#Eval("ProductImage")%>"/>
                             <div class="font-weight-bold"><%#Eval("ProductName")%></div>
-                        </a>
-                            <div class="font-weight-bold">₩ <%#Eval("ProductPrice")%></div>
                             <input id="manageBtn" class="btn-outline-success font-weight-bold btn mt-1" onclick="goToManage(<%#Eval("ProductId")%>)" type="button" value="Manage" />
                     </div>
                 </div>

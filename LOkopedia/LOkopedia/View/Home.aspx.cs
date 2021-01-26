@@ -50,9 +50,19 @@ namespace LOkopedia.View
             dt.Columns.Add("ProductPrice");
             dt.Columns.Add("ProductImage");
 
-            for (int i = 0; i < list.Count; i++)
+            if(list.Count < 12)
             {
-                dt.Rows.Add(list[i].ProductId, list[i].ProductName, list[i].ProductPrice.ToString(), ConvertToImage(list[i].ProductImage));
+                for (int i = 0; i < list.Count;  i++)
+                {
+                    dt.Rows.Add(list[i].ProductId, list[i].ProductName, list[i].ProductPrice.ToString(), ConvertToImage(list[i].ProductImage));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 12;  i++)
+                {
+                    dt.Rows.Add(list[i].ProductId, list[i].ProductName, list[i].ProductPrice.ToString(), ConvertToImage(list[i].ProductImage));
+                }
             }
 
             ListView1.DataSource = dt;

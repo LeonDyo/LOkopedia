@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%if (count > 0)
+        {%>
     <div class="container mt-5" style="min-height:70vh;">
         <asp:ListView ID="ListView1" runat="server">
             <ItemTemplate>
@@ -22,4 +24,12 @@
                 </ItemTemplate>
             </asp:ListView>
     </div>
+    <%} %>
+    <%else
+        { %>
+                <div class="container text-center font-weight-bold mt-5" style="min-height:70vh; font-size:30px;">
+                <br /><br /><br /><br /><br /><br /><br />
+                You have no transaction yet . . . 
+        </div>
+    <%} %>
 </asp:Content>
